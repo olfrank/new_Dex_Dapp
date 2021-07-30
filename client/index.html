@@ -1,0 +1,166 @@
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Decentralized Exchange</title>
+
+        <!-- <script src = "../node_modules/jquery/dist/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+        </script>
+
+        <!-- <script type="text/javascript" src="./web3.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+        <link rel="stylesheet" 
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+              crossorigin="anonymous">
+        
+        <script src="https://kit.fontawesome.com/8d9e2e73ef.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+        <script src = "index.js"></script>
+
+        <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="./shared.css">
+    </head>
+    <body id = "body">
+
+
+        <div class = "cloud_1"></div>
+<header>
+
+    <h1 style = "text-align: center" class = "textAnim">
+        <span class = "text-wrapper">
+            <span class = "letters">getting started.</span>
+        </span>
+    </h1>
+        
+</header>
+
+<div class = "cloud_2"></div>
+<div class = "cloud_3"></div>
+
+<div class="topnav">
+    <a class="active" href="index.html">getting started.</a>
+    <a href="dex.html">dex.</a>
+</div>
+        
+        <main>
+
+            <ul id="cards">
+                
+                <li class="card" id="card_1">
+                    <div class="card__content first">
+                        <div>
+                            <h2>What is a Decentralized Exchange?</h2>
+                            <p>A decentralized exchange (DEX) is a direct peer-to-peer marketplace connecting buyers and sellers of cryptocurrencies. 
+                               Since its inception, DEXs have become the preferred method of exchanging crypto assets due to its minimal custodial 
+                               risk, trustless transactions, low fees, and privacy features. Centralized exchanges are overseen and recorded by a 
+                               central authority who gatekeeps your activity and has control/access to your account, assets and other personal 
+                               information.
+                               <br>
+                               DEX platforms, however, are non-custodial, meaning the user retains full control over their own funds, private keys, 
+                               and data. This is achieved through the use of smart contracts which self-execute under pre-determined conditions and 
+                               append each transaction to the blockchain (an immutable, open source distributed ledger). 
+                            </p>
+                            
+                        </div>
+                        <figure>
+                            <img src="https://miro.medium.com/max/1112/1*1z6TdeVMs5p5rAoYRYQqpA.png" alt="Image description"
+                                    style="background-color: #ffffff;"> 
+                                    
+                        </figure>
+                        
+                    </div>
+                </li>
+                
+                
+                <li class="card" id="card_2">
+                    <div class="card__content second">
+                        <div>
+                            <h2>Limit & Market Orders</h2>
+                            <p>A limit order is a type of order whereby the buyer/seller can specify the entry/exit price they wish to trade at. 
+                                An individual would prefer to create a limit order if he/she believes the price of an asset is going to reach a 
+                                more favorable one in the near future. However, there is no guarantee that the order will be filled within the 
+                                time in which the order is left open.
+                                <br><br>
+                                A market order is a more straightforward approach to trading, in that, it’s an order to buy or sell security 
+                                immediately at the current market price. The appeal to use one type of order over another will be situation 
+                                specific and will depend on an individual’s knowledge of the asset and its projections. 
+                                </p>
+                            
+                        </div>
+                        <figure>
+                            <img src="https://i0.wp.com/blog.achievable.me/wp-content/uploads/2020/08/market-vs-limit.png?resize=1024%2C614&ssl=1" alt="Image description"
+                                 style = "background-color: #cbe4f5;"> 
+                        </figure>
+                    </div>
+                </li>
+                
+                
+                <li class="card" id="card_3">
+                    <div class="card__content third">
+                        <div>
+                            <h2>Ganache & MetaMask</h2>
+                            <p><strong>Ganache </strong>allows you to run a personal Ethereum blockchain used to run tests, execute commands, and inspect 
+                                state while controlling how the chain operates. Ganache is an extremely useful tool in helping developers 
+                                debug, improve the security and test the functionality of their smart contracts. It also provides convenient 
+                                tools such as a built-in block explorer. 
+                                <br>
+                                <strong>MetaMask </strong>is a HD cryptocurrency wallet which allows users to interact with the Ethereum blockchain. In the 
+                                form of a browser extension or mobile app, the MetaMask wallet allows its users to interact with decentralized 
+                                applications (otherwise known as DApps), send and receive ERC-20 tokens (Ethereum based cryptocurrencies), 
+                                store and manage account keys and broadcast transactions to the blockchain.  
+                                </p>
+                            
+                        </div>
+                        <figure>
+                            <img src="https://miro.medium.com/max/1440/1*PeqHouOT1H8WhXTLBv4SxA.png" alt="Image description"
+                                 style = "background-color: #ffffff;">
+                        </figure>
+                    </div>
+                </li>
+                
+                
+                <li class="card" id="card_4">
+                    <div class="card__content fourth">
+                        <div>
+                            <h2>Set Up Ganache & MetaMask</h2>
+                            <p>While MetaMask is considered safe and private, there are still inherent risks involved in storing your funds online.
+                               Online wallets are a common target in phishing attacks, whereby an attacker will pose as a trusted 
+                                entity and trick a victim into sharing their personal data. Critics have also pointed out the potential risks 
+                                involved in using MetaMask on certain sites where it can leak identifiable information to data collection 
+                                networks and web trackers. It is therefore encouraged to store large amounts of crypto-assets on a hardware 
+                                wallet (cold storage) and use MetaMask solely to interact with the blockchain.  
+                                <br> <br>
+                                A tutorial on how to setup your own MetaMask wallet can be found <a href="https://www.youtube.com/watch?v=yWfZnjkhhhg"><strong>here</strong></a>
+                                <br>
+                                A tutorial on how to setup your local Ganache blockchain can be found <a href="https://www.youtube.com/watch?v=nUEBAS5r4Og"><strong>here</strong></a>
+                            
+                            </p>
+                            
+                        </div>
+                        <figure>
+                            <img src="https://lh6.googleusercontent.com/vbIzoO24ZjCmL_PCPj1fee7458DdFPssdn7u_Pj1-lJ_XHC_XeB-Rb94ABSFbtNCOattFQ7V4CdLYDAg-yJBv4ORmkPFo-YQlfYsl_5nDIVjfJgm5uBOy_E4FvrDcVpAlVnyTEiA" alt="Image description"
+                                 style = "background-color: #ffffff;">
+                        </figure>
+                    
+                </li>
+                </div>
+            </ul>
+        </main>
+
+        <footer>
+            <a href="https://www.linkedin.com/in/ollie-francis-57256b1b1/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/olfrank"> <i class="fab fa-github"></i></a>
+        </footer>
+
+    </body>
+
+    <script src = "connectBtn.js"></script>
+</html>
