@@ -44,13 +44,15 @@ contract Wallet is Ownable{
     }
 
     function depositEth() payable external {
+        require(msg.value > 0, "depositEth: msg.value should be higher than zero");
         balances[msg.sender][bytes32("ETH")] = balances[msg.sender][bytes32("ETH")].add(msg.value);
     }
     
     function withdrawEth(uint amount) external {
-        require(balances[msg.sender][bytes32("ETH")] >= amount,'Insuffient balance'); 
+        require(balances[msg.sender][bytes32("ETH")] >= amount,'Insufficient balance'); 
         balances[msg.sender][bytes32("ETH")] = balances[msg.sender][bytes32("ETH")].sub(amount);
         msg.sender.call{value:amount}("");
+        
     }
 
 }

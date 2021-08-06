@@ -6,6 +6,7 @@ contract ADA is ERC20 {
 
     constructor() ERC20("Cardano", "ADA") {
         //mint to msg.sender(us)
-        _mint(msg.sender, 1000);
+        _mint(msg.sender, 100000);
     }
+
 }  

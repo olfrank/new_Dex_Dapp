@@ -7,36 +7,35 @@ contract Dex is Wallet {
 using SafeMath for uint256;
     
     enum Side {
-        Buy, //0
-        Sell //1
+        Buy, 
+        Sell 
     }
 
     //order.side = Side.Buy
-  
 
     struct Order {
-        uint id;
+        uint256 id;
         address trader;
         Side side;
         bytes32 ticker;
-        uint amount;
-        uint price; //limit orders
-        uint filled;
+        uint256 amount;
+        uint256 price; //limit orders
+        uint256 filled;
     }
 
-    uint public nextOrderID = 0;
+    uint256 public nextOrderID = 0;
 
-    mapping(bytes32 => mapping(uint => Order[])) orderBook;
+    mapping(bytes32 => mapping(uint256 => Order[])) orderBook;
 
     function getTokenList() public view returns(uint256){
         return TokenList.length;
     }
 
     function getOrderBook(bytes32 ticker, Side side) view public returns(Order[] memory){
-        return orderBook[ticker][uint(side)];
+        return orderBook[ticker][uint256(side)];
     }
 
-    function createLimitOrder( Side side, bytes32 ticker, uint amount, uint price) public {
+    function createLimitOrder( Side side, bytes32 ticker, uint256 amount, uint256 price) public {
 
         if(side == Side.Buy){
             require(balances[msg.sender]["ETH"] >= amount.mul(price));
@@ -44,11 +43,11 @@ using SafeMath for uint256;
         else if(side == Side.Sell){
             require(balances[msg.sender][ticker] >= amount);
         }
-        Order[] storage orders = orderBook[ticker][uint(side)];
+        Order[] storage orders = orderBook[ticker][uint256(side)];
         orders.push( Order(nextOrderID, msg.sender, side, ticker, amount, price, 0) );
 
         //Bubble Loop Algorithm to sort Buy and Sell orders
-        uint i = orders.length > 0 ? orders.length -1 : 0;
+        uint256 i = orders.length > 0 ? orders.length -1 : 0;
 
         if(side == Side.Buy){
            while(i > 0){
@@ -76,12 +75,12 @@ using SafeMath for uint256;
         nextOrderID++;
 }
 
-     function createMarketOrder( Side side, bytes32 ticker, uint amount)public {
+     function createMarketOrder( Side side, bytes32 ticker, uint256 amount)public {
          if(side == Side.Sell){
             require(balances[msg.sender][ticker] >= amount, "insufficient balance");
          }
         
-        uint orderBookSide;
+        uint256 orderBookSide;
         if(side == Side.Buy){
             orderBookSide = 1;
         }else{
@@ -90,14 +89,14 @@ using SafeMath for uint256;
 
         Order[] storage orders = orderBook[ticker][orderBookSide];
 
-        uint totalFilled = 0;
+        uint256 totalFilled = 0;
 
         //this loop will take us into the orderbook
-        for(uint i = 0; i < orders.length && totalFilled < amount; i++){
+        for(uint256 i = 0; i < orders.length && totalFilled < amount; i++){
             //how many existing orders can we fill with our new market order
-            uint leftToFill = amount.sub(totalFilled);//amount minus totalFilled
-            uint availableToFill = orders[i].amount.sub(orders[i].filled); // how much is available in this current order
-            uint filled = 0;
+            uint256 leftToFill = amount.sub(totalFilled);//amount minus totalFilled
+            uint256 availableToFill = orders[i].amount.sub(orders[i].filled); // how much is available in this current order
+            uint256 filled = 0;
             if( availableToFill > leftToFill  ){
                 filled = leftToFill; // fill the entire market order
             }else{
@@ -105,7 +104,7 @@ using SafeMath for uint256;
             }
             totalFilled = totalFilled.add(filled);//update totalFilled
             orders[i].filled = orders[i].filled.add(filled);
-            uint cost = filled.mul(orders[i].price);
+            uint256 cost = filled.mul(orders[i].price);
 
             if(side == Side.Buy){
                 //verfiy the buyer has enough eth to cover trade
@@ -131,7 +130,7 @@ using SafeMath for uint256;
             //Loop through order book and remove 100% filled orders
             while( orders.length > 0 && orders[0].filled == orders[0].amount ){
                 //removing the top element by overwriting every element with the next element in the list
-                for(uint i = 0; i < orders.length -1; i++){
+                for(uint256 i = 0; i < orders.length -1; i++){
                     orders[i] = orders[i +1];
                 }
                 orders.pop();
