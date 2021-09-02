@@ -1,3 +1,7 @@
+.hint{
+  border-radius: 20px;
+  border: 1px dotted black;
+}
 
 
 
@@ -310,9 +314,13 @@
   }
   
   .space{
-    margin: 20px
+    margin-bottom: 20px;
   }
-  
+
+  .space2{
+    margin-top: 10px;
+  }
+
   .my-col-2{
     border-right: 1px solid rgb(41, 44, 41);
     width: 150px;
@@ -343,12 +351,14 @@
     position: inherit;
     margin: auto;
     width: 100%;
+    margin-left: 10px;
     
   }
   
   .withdraw-amount{
     margin: auto;
     width: 100%;
+    margin-left: 10px;
   }
   
   

@@ -3,7 +3,7 @@
 var web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 
 
-var contractAddress = "0x66B3D3dc9c94f1344DD60684D541CDb81a89532A";
+var contractAddress = "0x5C12969D58a7312Cf8660aDD748DB0B62E793283";
 
 $(document).ready(function (){
     window.ethereum.enable().then(async function(accounts){
@@ -37,6 +37,7 @@ async function withdrawTokens(){
 
 async function showTokenBalance(){
     let tokenList = await dex.methods.getTokenList().call();
+
     for(let i =0; i< tokenList.length; i++){
         let token = await dex.methods.TokenList(i).call();
         let balance = await dex.methods.balances(ethereum.selectedAddress, token).call();
@@ -48,7 +49,7 @@ async function showTokenBalance(){
 async function showETHBalance(){
     let address = ethereum.selectedAddress;
     let currentETHBalance = await dex.methods.balances(address, web3.utils.fromUtf8("ETH")).call();
-    console.log(web3.utils.fromWei(currentETHBalance));
+    console.log("current eth balance: " +web3.utils.fromWei(currentETHBalance));
     $("<span />").text(" " + web3.utils.fromWei(currentETHBalance)).appendTo("#eth-balance");
     $("<span />").text(" " + currentETHBalance).appendTo("#wei-balance");
 
@@ -56,42 +57,49 @@ async function showETHBalance(){
 
 async function showTokenList(){ 
     let list = await dex.methods.getTokenList().call();
-    for(let i=0; i < list.length; i++){
+    console.log("token list length is: "+list);
+    for(let i=0; i < list; i++){
         let tokenList = await dex.methods.TokenList(i).call();
-        console.log(tokenList);
-        $('<p />').text("Ticker: " + web3.utils.toUtf8(tokenList) + ", ").appendTo('.listOfTokens');
+        console.log(web3.utils.toUtf8(tokenList));
+        $('<p />').text(web3.utils.toUtf8(tokenList)).appendTo('.listOfTokens');
     }
 }
 
 async function showOrderbookBuy(){ 
-    let orderbook = dex.methods.getOrderBook(web3.utils.fromUtf8("ADA"), 0).call();
-    console.log(orderbook);
+    let orderbookBuy = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 0).call();
+    console.log("orderbook buy side: "+orderbookBuy);
 
-    for(let i = 0; i < orderbook.length; i++){
-        let ticker = orderbook[i]["ticker"];
-        let amount = orderbook[i]["amount"];
-        let price = web3.utils.fromWei(orderbook[i]["price"]);
-        console.log(ticker);
-        console.log(amount);
-        console.log(price);
+    for(let i = 0; i < orderbookBuy.length; i++){
+        let ticker = orderbookBuy[i]["ticker"];
+        let amount = orderbookBuy[i]["amount"];
+        let price = web3.utils.toWei(orderbookBuy[i]["price"]);
+        console.log("orderbook buy ticker: "+web3.utils.toUtf8(ticker));
+        console.log("orderbook buy amount: "+amount);
+        console.log("orderbook buy price: "+price);
 
-        $("<tr />").appendTo("#BuyOrders");
-        $("<td />").text("Ticker: " + web3.utils.fromUtf8(ticker).toString()).appendTo("#BuyOrders");
-        $("<td />").text("Amount: " + amount).appendTo("#BuyOrders");
-        $("<td />").text("Price (in Wei): " + web3.utils.fromWei(price).toString()).appendTo("#BuyOrders");
+        $("<tr />").appendTo(".buy-orders-side");
+        $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".buy-orders-side");
+        $("<td />").text(amount).appendTo(".buy-orders-side");
+        $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".buy-orders-side");
     }
 }
 
 async function showOrderbookSell(){
-    let orderbook = dex.methods.getOrderBook(web3.utils.fromUtf8("ADA"), 1).call();
-    for(let i = 0; i<orderbook.length; i++){
-        let ticker = orderbook[i]["ticker"];
-        let amount = orderbook[i]["amount"];
-        let price = web3.utils.fromWei(orderbook[i]["price"]);
-        $("<tr >").appendTo("#SellOrders");
-        $("<td />").text("Ticker: " + web3.utils.fromUtf8(ticker).toString()).appendTo("#SellOrders");
-        $("<td />").text("Amount: " + amount).appendTo("#SellOrders");
-        $("<td />").text("Price (in Wei): " + web3.utils.fromWei(price).toString()).appendTo("#SellOrders");
+    let orderbookSell = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 1).call();
+    console.log("orderbook sell side: "+orderbookSell);
+
+    for(let i = 0; i < orderbookSell.length; i++){
+        let ticker = orderbookSell[i]["ticker"];
+        let amount = orderbookSell[i]["amount"];
+        let price = web3.utils.toWei(orderbookSell[i]["price"]);
+        console.log("orderbook sell ticker: "+web3.utils.toUtf8(ticker));
+        console.log("orderbook sell amount: "+amount);
+        console.log("orderbook sell price: "+price);
+
+        $("<tr />").appendTo(".sell-orders-side").addClass("new-row")
+        $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".new-row");
+        $("<td />").text(amount).appendTo(".new-row");
+        $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".new-row");
     }
 }
 

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Decentralized Exchange</title>
+    <title>decentralized exchange</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -81,32 +81,32 @@
     </div>
 
     <div class = "container shadows" id = "depositWithdraw">
-        <h2>Deposit or Withdraw your ETH <i class="fab fa-ethereum"></i></h2> 
+        <h2>deposit or withdraw your ETH <i class="fab fa-ethereum"></i></h2> 
         <div class = "row my-row">
-            <div class = "col-sm my-col" id = "depositETH"><h4>Deposit</h4>
-                <div class = "col-sm space">Enter the amount of Ether (ETH) you would like to deposit</div>
+            <div class = "col-sm my-col" id = "depositETH"><h4>deposit.</h4>
+                <div class = "col-sm space hint">enter the amount of ether (ETH) you would like to deposit</div>
                 <div class="form-outline">
                     <input id = "depositEther" type="text" id="form1" placeholder = "Amount To Deposit" class="form-control deposit-amount" />
-                    <button class = "btn btn-dark space" type = "button" id = "btndepositEth">Deposit</button>
+                    <button class = "btn btn-dark space2" type = "button" id = "btndepositEth">deposit</button>
                 </div>
             </div>
 
-            <div class = "col-sm my-col" id = "withdrawETH"><h4>Withdraw</h4>
-                <div class = "col-sm space">Enter the amount of Ether (ETH) you would like to withdraw</div>
+            <div class = "col-sm my-col" id = "withdrawETH"><h4>withdraw.</h4>
+                <div class = "col-sm space hint">enter the amount of ether (ETH) you would like to withdraw</div>
 
                 <div class="form-outline" style= "width: 200px;">
                     <input id = "withdrawEther" type="text" id="form1" placeholder = "Amount To Withdraw" class="form-control withdraw-amount" />
-                    <button class = "btn btn-dark space" type = "button" id = "btnwithdrawEth">Withdraw</button>
+                    <button class = "btn btn-dark space2" type = "button" id = "btnwithdrawEth">withdraw</button>
                 </div>
             </div>
-            <div class = "col-sm-6 my-col" id = "yourBalance"><h4>Your Balance <i class="fas fa-wallet"></i></h4>
+            <div class = "col-sm-6 my-col" id = "yourBalance"><h4>your balance <i class="fas fa-wallet"></i></h4>
                 <div class = "row">
-                    <div class = "col my-col-2">Your ETH Balance
+                    <div class = "col my-col-2">your ETH balance
                         <p>ETH:<span id = "eth-balance"></span></p>
-                        <p>Equivalent in Wei:<span id = "wei-balance"></span></p>
+                        <p>equivalent in Wei:<span id = "wei-balance"></span></p>
                     </div>
 
-                    <div class = "col">Your Token Balance:
+                    <div class = "col">your token balance:
                             <span id = "tokenBal"></span>
                     </div>
                 </div>
@@ -117,36 +117,36 @@
     <hr>
 
     <div class = "container orders-container shadows">
-        <h2>Place Order <i class="fas fa-file-contract"></i></h2>
+        <h2>place order. <i class="fas fa-file-contract"></i></h2>
         <div class = "row my-row-order">
-            <div id= "limit" class = "col-sm limit-order"><h4>Limit Order</h4>
-                <div class = "choose col-sm my-col-1">To enter a buy order input the number 0. <br> For a sell order input the number 1
+            <div id= "limit" class = "col-sm limit-order"><h4>limit order.</h4>
+                <div class = "choose col-sm my-col-1">to enter a buy order input the number 0. <br> For a sell order input the number 1
                     <input class = "input-field" type="number" id = "typeL" placeholder = "Buy(0) or Sell(1)">
                 </div>
-                <div class = "choose col-sm my-col-1">Enter the ticker of the token you would like to buy/sell below: (e.g. VET)
+                <div class = "choose col-sm my-col-1">enter the ticker of the token you would like to buy/sell below: (e.g. VET)
                     <input class = "input-field" type="bytes32" id = "tickerL" placeholder="Ticker">
                 </div>
-                <div class= "choose col-sm my-col-1">Input the amount you would like to buy/sell of the chosen token below:
+                <div class= "choose col-sm my-col-1">input the amount you would like to buy/sell of the chosen token below:
                     <input class = "input-field" type="number" id = "amountL" placeholder="Amount">
                 </div>
-                <div class = "choose col-sm my-col-1">Input the price of the asset you wish to buy/sell at below:
-                    <input class = "input-field" type="number" name="priceL" id="Price" placeholder="Price">
+                <div class = "choose col-sm my-col-1">input the price of the asset you wish to buy/sell at below:
+                    <input class = "input-field" type="number" id="priceL" placeholder="Price">
                 </div>
-                <button class = "btn btn-dark space" type = "button" id = "btnLimitOrder">Confirm and Place Limit Order</button>
+                <button class = "btn btn-dark space" type = "button" id = "btnLimitOrder">confirm and place limit order</button>
                 <span class = "confirmOrder"></span>
             </div>
 
-            <div id = "market" class = "col-sm market-order"><h4>Market Order</h4>
-                <div class = "choose col-sm my-col-1">To enter a buy order input the number 0. <br>For a sell order input the number 1
+            <div id = "market" class = "col-sm market-order"><h4>market order.</h4>
+                <div class = "choose col-sm my-col-1">to enter a buy order input the number 0. <br>For a sell order input the number 1
                     <input class = "input-field" type="number" id = "typeM" placeholder = "Buy(0) or Sell(1)">
                 </div>
-                <div class = "choose col-sm my-col-1">Enter the ticker of the token you would like to buy/sell below
+                <div class = "choose col-sm my-col-1">enter the ticker of the token you would like to buy/sell below
                     <input class = "input-field" type="bytes32" id = "tickerM" placeholder="Ticker">
                 </div>
-                <div class = "choose col-sm my-col-1">Input the amount you would like to buy/sell of the chosen token below
+                <div class = "choose col-sm my-col-1">input the amount you would like to buy/sell of the chosen token below
                     <input class = "input-field" type="number" id = "amountM" placeholder="Amount">
                 </div>
-                <button class = "btn btn-dark space" type = "button" id = "btnMarketOrder">Confirm and Place Market Order</button>
+                <button class = "btn btn-dark space" type = "button" id = "btnMarketOrder">confirm and place market order</button>
                 <span class = "confirmOrder"></span>
             </div>
         </div>
@@ -155,7 +155,7 @@
     <hr>
 
         <div class = "listOfTokens" id = "tokenList">
-            <h5>Tradable Tokens:</h5>
+            <h5>tradable tokens:</h5>
             <span id = "list"></span>
         </div>
     
@@ -163,51 +163,49 @@
     <hr>
 
     <div class = "orderbook container shadows">
-        <h2>Orderbook <i class="fas fa-book"></i></h2>
+        <h2>orderbook. <i class="fas fa-book"></i></h2>
             <div id = "buyside">
-               <h4>Buy Side</h4>
-               <table class = "orders-table" id = "BuyOrders">
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+               <h4>buy side.</h4>
+               <table class = "buy-orders-side orders-table" id = "BuyOrders">
+                   <tbody>
+                      <tr>
+                        <th>ticker</th>
+                        <th>amount</th>
+                        <th>price (in Wei)</th>
+                      </tr>
+                      
+                   </tbody>
+                    
                    
                </table>
             </div>
             <div id = "sellside">
-                <h4>Sell Side</h4>
-                <table class = "orders-table" id = "SellOrders">
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                <h4>sell side.</h4>
+                <table class = "sell-orders-side orders-table" id = "SellOrders">
+                    
+                        <tr>
+                          <th>ticker</th>
+                          <th>amount</th>
+                          <th>price (in Wei)</th>
+                        </tr>
+                        
+                     
+                    
                 </table>
             </div>
 
-        <button  class = " btn btn-dark" type= "button" id = " btnOrderbook">Refresh Orderbook</button>
+        <button  class = " btn btn-dark" type= "button" id = " btnOrderbook">refresh orderbook</button>
     </div>
 
     <div class = "admin shadows">
-        <h4>Dex Supply (Admin Section) <i class="fas fa-user-lock"></i></h4>
-        <p>Deposit Tokens to Supply</p>
+        <h4>dex supply (admin section) <i class="fas fa-user-lock"></i></h4>
+        <p>deposit tokens to supply</p>
         <input type="number" id = "depositTokens" class = "inputField">
-        <button type = "button" id = "btnTokenDeposit" class = "btn btn-dark">Confirm</button>
+        <button type = "button" id = "btnTokenDeposit" class = "btn btn-dark">confirm</button>
         <br><br><br>
-        <p>Withdraw Tokens from Supply</p>
+        <p>withdraw tokens from supply</p>
         <input type="text" id = "withdrawTokens" class = "inputField">
-        <button type = "button" id = "btnTokenWithdraw" class = "btn btn-dark">Confirm</button>
+        <button type = "button" id = "btnTokenWithdraw" class = "btn btn-dark">confirm</button>
     </div>
     
     <footer>
