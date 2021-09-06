@@ -163,7 +163,18 @@
     <hr>
 
     <div class = "orderbook container shadows">
-        <h2>orderbook. <i class="fas fa-book"></i></h2>
+        <div class = "wrapper-order">
+            <h2>orderbook. <i class="fas fa-book"></i></h2>
+            <div class="dropdown">
+                <button class="dropbtn">choose token.</button>
+                <div class="dropdown-content">
+                  <a href="#"  id="ADA">ADA</a>
+                  <a href="#"  id="VET">VET</a>
+                  <a href="#"  id="LINK">LINK</a>
+                </div>
+              </div>
+        </div>
+        
             <div id = "buyside">
                <h4>buy side.</h4>
                <table class = "buy-orders-side orders-table" id = "BuyOrders">
@@ -172,6 +183,7 @@
                         <th>ticker</th>
                         <th>amount</th>
                         <th>price (in Wei)</th>
+                        <th>price</th>
                       </tr>
                       
                    </tbody>
@@ -187,6 +199,7 @@
                           <th>ticker</th>
                           <th>amount</th>
                           <th>price (in Wei)</th>
+                          <th>price</th>
                         </tr>
                         
                      
@@ -194,17 +207,19 @@
                 </table>
             </div>
 
-        <button  class = " btn btn-dark" type= "button" id = " btnOrderbook">refresh orderbook</button>
+        <!-- <button  class = " btn btn-dark" type= "button" id = " btnOrderbook">refresh orderbook</button> -->
     </div>
 
     <div class = "admin shadows">
         <h4>dex supply (admin section) <i class="fas fa-user-lock"></i></h4>
         <p>deposit tokens to supply</p>
-        <input type="number" id = "depositTokens" class = "inputField">
+        <input type="number" id = "depositTokens" placeholder="amount" class = "inputField">
+        <input type="text" class="ticker-adm-dep" placeholder="ticker">
         <button type = "button" id = "btnTokenDeposit" class = "btn btn-dark">confirm</button>
         <br><br><br>
         <p>withdraw tokens from supply</p>
-        <input type="text" id = "withdrawTokens" class = "inputField">
+        <input type="text" id = "withdrawTokens" placeholder="amount" class = "inputField">
+        <input type="text" class="ticker-adm-with" placeholder="ticker">
         <button type = "button" id = "btnTokenWithdraw" class = "btn btn-dark">confirm</button>
     </div>
     
@@ -216,4 +231,5 @@
     
 </body>
     <script src = "connectBtn.js"></script>
+    <script src="helpers.js"></script>
 </html>
