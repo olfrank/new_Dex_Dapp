@@ -45,7 +45,7 @@
 
 .hint{
   border-radius: 20px;
-  border: 1px dotted black;
+
 }
 
 
@@ -288,6 +288,7 @@
       background: linear-gradient(-45deg, #ea4a19, #e05312, #fa8e46, #e46430);
       background-size: 400% 400%;
       animation: gradient 15s ease infinite;
+      font-family: 'Ubuntu', sans-serif;
   }
   
   @keyframes gradient {
@@ -381,22 +382,36 @@
   
   #withdrawETH{
     position: relative;
-    
     width: 50%; 
     text-align: center;
     padding: 30px;
+  }
+  .btnWithdraw{
+    border-radius: 10px;
+  }
+  .btnDeposit{
+    border-radius: 10px;
   }
   #yourBalance{
     position: relative;
     width: 50;
     padding: 30px;
+    
   }
+  #tokenBal{
+    list-style: none;
+    padding: initial;
+  }
+
   
   .deposit-amount{
-    position: inherit;
     margin: auto;
     width: 100%;
     margin-left: 10px;
+    display: flex;
+    position: relative;
+    border: none;
+    border-radius: 10px;
     
   }
   
@@ -404,6 +419,10 @@
     margin: auto;
     width: 100%;
     margin-left: 10px;
+    display: flex;
+    position: relative;
+    border: none;
+    border-radius: 10px;
   }
   
   
@@ -454,8 +473,14 @@
     
   }
   .input-field{
-    display: block;
+    display: flex;
     margin: 20px;
+    position: relative;
+    left: 91px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
   }
   
   #btnLimitOrder{
@@ -463,10 +488,12 @@
     width: 400px;
     padding: 10px;
     width: 50%;
+    border-radius: 10px;
   }
   #btnMarketOrder{
     padding: 10px;
     width: 50%;
+    border-radius: 10px;
   }
   
   
@@ -513,9 +540,9 @@
   
   .orders-table{
     margin: 10px;
-    font-size: 12px;
+    font-size: 13px;
     width: 95%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
   }
   
   td, th {
@@ -549,11 +576,10 @@
   
   .ListOfTokens{
     margin-top: 100px;
-    margin-bottom: 100px;
     position: relative;
     margin: auto;
     margin-bottom: 30px;
-    width: 600px;
+    width: 22%;
     border-radius: 25px;
     background-color: rgb(169, 164, 236);
     padding: 20px;

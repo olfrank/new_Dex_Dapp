@@ -52,12 +52,12 @@ async function withdrawTokens(){
 async function showTokenBalance(){
     let tokenList = await dex.methods.getTokenList().call();
 
-    for(let i =0; i< tokenList.length; i++){
+    for(let i =0; i< tokenList; i++){
         let token = await dex.methods.TokenList(i).call();
         console.log(web3.utils.toUtf8(token));
         let balance = await dex.methods.balances(ethereum.selectedAddress, token).call();
         console.log("Balance of " + web3.utils.toUtf8(token) + " is: " + balance);
-        $('<span />').text(web3.utils.toUtf8(token) + ": "+ balance).appendTo("#tokenBal");
+        $('<li />').text(web3.utils.toUtf8(token) + ": "+ balance).appendTo("#tokenBal");
     }
 }
 
@@ -156,13 +156,14 @@ async function placeLimitOrder(){
     table = limitOrderBuyTable
   }
   await dex.methods.createLimitOrder(side, web3.utils.fromUtf8(ticker), amount, price).send().on("receipt", function(receipt) {
-
+    console.log("limit Order created: " + side, web3.utils.fromUtf8(ticker), amount, price);
     //here we simple just apend a new row to our table using this notation
     table.innerHTML += `
     <tr>
         <td>${ticker}</td>
         <td>${amount}</td>
-        <td >${priceInWei}</td>
+        <td>${price}</td>
+        <td>${priceInWei}</td>
     </tr>`
 
   }).on("error", function(error) {
@@ -177,8 +178,7 @@ async function loadLimitOrderTable(ticker, side) {
     // var buy = side == 0;
     // var sell = side == 1;
     //what we do here is we call the getOrderBook function twice and populate both tables for each side
-  
-    //here i hardcode the ticker to be ETH to make things easier for you but you should pass 
+   
     //in ticker into the get orderBook function
     const orderBookBuy = await dex.methods.getOrderBook(web3.utils.fromAscii(ticker), 0).call().then(function(result) {
       for (let i = 0; i < result.length; i++) {
@@ -189,8 +189,8 @@ async function loadLimitOrderTable(ticker, side) {
             <tr class="table-row">
                 <td>${web3.utils.toUtf8(result[i].ticker)}</td>
                 <td>${result[i].amount}</td>
-                <td>${priceInWei}</td>
                 <td>${result[i].price}</td>
+                <td>${priceInWei}</td>
             </tr>`  
       }
     })
@@ -203,8 +203,8 @@ async function loadLimitOrderTable(ticker, side) {
             <tr class="table-row">
                 <td>${web3.utils.toUtf8(result[i].ticker)}</td>
                 <td>${result[i].amount}</td>
-                <td>${priceInWei}</td>
                 <td>${result[i].price}</td>
+                <td>${priceInWei}</td>
             </tr>`  
       }
     })
@@ -259,7 +259,6 @@ async function withdrawEth(){
     console.log(balanceAfter);
     
     reloadPage()
-    
 }
 
 async function depositEth (){

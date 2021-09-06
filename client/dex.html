@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>decentralized exchange</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -84,30 +85,32 @@
         <h2>deposit or withdraw your ETH <i class="fab fa-ethereum"></i></h2> 
         <div class = "row my-row">
             <div class = "col-sm my-col" id = "depositETH"><h4>deposit.</h4>
-                <div class = "col-sm space hint">enter the amount of ether (ETH) you would like to deposit</div>
+                <div class = "col-sm space hint">~ enter the amount of ether (ETH) you would like to deposit ~</div>
                 <div class="form-outline">
                     <input id = "depositEther" type="text" id="form1" placeholder = "Amount To Deposit" class="form-control deposit-amount" />
-                    <button class = "btn btn-dark space2" type = "button" id = "btndepositEth">deposit</button>
+                    <button class = "btn btn-dark space2 btnDeposit" type = "button" id = "btndepositEth">deposit</button>
                 </div>
             </div>
 
             <div class = "col-sm my-col" id = "withdrawETH"><h4>withdraw.</h4>
-                <div class = "col-sm space hint">enter the amount of ether (ETH) you would like to withdraw</div>
+                <div class = "col-sm space hint">~ enter the amount of ether (ETH) you would like to withdraw ~ </div>
 
                 <div class="form-outline" style= "width: 200px;">
                     <input id = "withdrawEther" type="text" id="form1" placeholder = "Amount To Withdraw" class="form-control withdraw-amount" />
-                    <button class = "btn btn-dark space2" type = "button" id = "btnwithdrawEth">withdraw</button>
+                    <button class = "btn btn-dark space2 btnWithdraw" type = "button" id = "btnwithdrawEth">withdraw</button>
                 </div>
             </div>
-            <div class = "col-sm-6 my-col" id = "yourBalance"><h4>your balance <i class="fas fa-wallet"></i></h4>
+            <div class = "col-sm-6 my-col" id = "yourBalance"><h4>your balance.</h4>
                 <div class = "row">
-                    <div class = "col my-col-2">your ETH balance
+                    <div class = "col my-col-2">ETH balance
                         <p>ETH:<span id = "eth-balance"></span></p>
                         <p>equivalent in Wei:<span id = "wei-balance"></span></p>
                     </div>
 
-                    <div class = "col">your token balance:
-                            <span id = "tokenBal"></span>
+                    <div class = "col">token balance:
+                            <ul id = "tokenBal">
+
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -120,31 +123,32 @@
         <h2>place order. <i class="fas fa-file-contract"></i></h2>
         <div class = "row my-row-order">
             <div id= "limit" class = "col-sm limit-order"><h4>limit order.</h4>
-                <div class = "choose col-sm my-col-1">to enter a buy order input the number 0. <br> For a sell order input the number 1
-                    <input class = "input-field" type="number" id = "typeL" placeholder = "Buy(0) or Sell(1)">
+                <div class = "choose col-sm my-col-1">~ to enter a buy order input the number 0. <br> For a sell order input the number 1 ~
+                    <input class = "input-field" type="number" id = "typeL" placeholder = "buy(0) or sell(1)">
                 </div>
-                <div class = "choose col-sm my-col-1">enter the ticker of the token you would like to buy/sell below: (e.g. VET)
-                    <input class = "input-field" type="bytes32" id = "tickerL" placeholder="Ticker">
+                <div class = "choose col-sm my-col-1">~ enter the ticker of the token you would like to buy/sell below: (e.g. VET) ~
+                    <input class = "input-field" type="bytes32" id = "tickerL" placeholder="ticker">
                 </div>
-                <div class= "choose col-sm my-col-1">input the amount you would like to buy/sell of the chosen token below:
-                    <input class = "input-field" type="number" id = "amountL" placeholder="Amount">
+                <div class= "choose col-sm my-col-1">~ input the amount you would like to buy/sell of the chosen token below: ~
+                    <input class = "input-field" type="number" id = "amountL" placeholder="amount">
                 </div>
-                <div class = "choose col-sm my-col-1">input the price of the asset you wish to buy/sell at below:
-                    <input class = "input-field" type="number" id="priceL" placeholder="Price">
+                <div class = "choose col-sm my-col-1">~ input the price of the asset you wish to buy/sell at below ~
+                    <p>reference: 100 = 1 ETH, 1 = 0.01ETH</p>
+                    <input class = "input-field" type="number" id="priceL" placeholder="price">
                 </div>
                 <button class = "btn btn-dark space" type = "button" id = "btnLimitOrder">confirm and place limit order</button>
                 <span class = "confirmOrder"></span>
             </div>
 
             <div id = "market" class = "col-sm market-order"><h4>market order.</h4>
-                <div class = "choose col-sm my-col-1">to enter a buy order input the number 0. <br>For a sell order input the number 1
-                    <input class = "input-field" type="number" id = "typeM" placeholder = "Buy(0) or Sell(1)">
+                <div class = "choose col-sm my-col-1">~ to enter a buy order input the number 0. <br>For a sell order input the number 1 ~
+                    <input class = "input-field" type="number" id = "typeM" placeholder = "buy(0) or sell(1)">
                 </div>
-                <div class = "choose col-sm my-col-1">enter the ticker of the token you would like to buy/sell below
-                    <input class = "input-field" type="bytes32" id = "tickerM" placeholder="Ticker">
+                <div class = "choose col-sm my-col-1">~ enter the ticker of the token you would like to buy/sell below ~
+                    <input class = "input-field" type="bytes32" id = "tickerM" placeholder="ticker">
                 </div>
-                <div class = "choose col-sm my-col-1">input the amount you would like to buy/sell of the chosen token below
-                    <input class = "input-field" type="number" id = "amountM" placeholder="Amount">
+                <div class = "choose col-sm my-col-1">~ input the amount you would like to buy/sell of the chosen token below ~
+                    <input class = "input-field" type="number" id = "amountM" placeholder="amount">
                 </div>
                 <button class = "btn btn-dark space" type = "button" id = "btnMarketOrder">confirm and place market order</button>
                 <span class = "confirmOrder"></span>
@@ -166,7 +170,7 @@
         <div class = "wrapper-order">
             <h2>orderbook. <i class="fas fa-book"></i></h2>
             <div class="dropdown">
-                <button class="dropbtn">choose token.</button>
+                <button class="dropbtn">choose token <i class="fas fa-bars"></i></button>
                 <div class="dropdown-content">
                   <a href="#"  id="ADA">ADA</a>
                   <a href="#"  id="VET">VET</a>
@@ -182,8 +186,8 @@
                       <tr>
                         <th>ticker</th>
                         <th>amount</th>
-                        <th>price (in Wei)</th>
                         <th>price</th>
+                        <th>price (in Wei)</th>
                       </tr>
                       
                    </tbody>
@@ -198,8 +202,8 @@
                         <tr>
                           <th>ticker</th>
                           <th>amount</th>
-                          <th>price (in Wei)</th>
                           <th>price</th>
+                          <th>price (in Wei)</th>
                         </tr>
                         
                      
