@@ -120,7 +120,7 @@ async function placeLimitOrder(){
     table = limitOrderBuyTable
   }
   await dex.methods.createLimitOrder(side, web3.utils.fromUtf8(ticker), amount, price).send().on("receipt", function(receipt) {
-    console.log("limit Order created: " + side, web3.utils.fromUtf8(ticker), amount, price);
+    console.log("Limit order created: " + side, web3.utils.fromUtf8(ticker), amount, price);
     if(side == 0){
         side = "buy";
     }else{
@@ -227,57 +227,98 @@ const LINK = document.getElementById("LINK")
 
 ADA.onclick = function(){
   console.log("clicked ADA")
-  removeTokenOrderbook("VET", 0)
-  removeTokenOrderbook("VET", 1)
-  removeTokenOrderbook("LINK", 0)
-  removeTokenOrderbook("LINK", 1)
+  removeTokenOrderbookBuy("VET")
+  removeTokenOrderbookSell("VET")
+
+  removeTokenOrderbookBuy("LINK")
+  removeTokenOrderbookSell("LINK")
+
+  addTokenOrderbookBuy("ADA")
+    addTokenOrderbookSell("ADA")
   
-  loadLimitOrderTableBuy("ADA", 0);
-  loadLimitOrderTableSell("ADA", 1);
+  // loadLimitOrderTableBuy("ADA", 0);
+  // loadLimitOrderTableSell("ADA", 1);
 }
 
 
 VET.onclick = function(){
     console.log("clicked VET")
-    removeTokenOrderbook("ADA", 0)
-    removeTokenOrderbook("ADA", 1)
-    removeTokenOrderbook("LINK", 0)
-    removeTokenOrderbook("LINK", 1)
-    
-    loadLimitOrderTableBuy("VET", 0);
-    loadLimitOrderTableSell("VET", 1);
+    removeTokenOrderbookBuy("ADA")
+    removeTokenOrderbookSell("ADA")
+
+    removeTokenOrderbookBuy("LINK")
+    removeTokenOrderbookSell("LINK")
+
+    addTokenOrderbookBuy("VET")
+    addTokenOrderbookSell("VET")
+    // loadLimitOrderTableBuy("VET", 0);
+    // loadLimitOrderTableSell("VET", 1);
 }
 
 
 LINK.onclick = function(){
     console.log("clicked LINK")
-    removeTokenOrderbook("VET")
-    removeTokenOrderbook("VET")
-    removeTokenOrderbook("ADA")
-    removeTokenOrderbook("ADA")
+    removeTokenOrderbookBuy("VET")
+    removeTokenOrderbookSell("VET")
+
+    removeTokenOrderbookBuy("ADA")
+    removeTokenOrderbookSell("ADA")
+
+    addTokenOrderbookBuy("LINK")
+    addTokenOrderbookSell("LINK")
+
     
-    loadLimitOrderTableBuy("LINK", 0);
-    loadLimitOrderTableSell("LINK", 1);
+    // loadLimitOrderTableBuy("LINK", 0);
+    // loadLimitOrderTableSell("LINK", 1);
   }
 
 
-  function removeTokenOrderbook(ticker){
+  function removeTokenOrderbookBuy(ticker){
 
     if(ticker == "ADA"){
         $("#entry-ADA-buy").addClass("hidden");
-    }if(ticker == "VET"){
+    }else if(ticker == "VET"){
       $("#entry-VET-buy").addClass("hidden");
-    }if(ticker == "LINK"){
+    }else {
       $("#entry-LINK-buy").addClass("hidden");
     }
 
-    if(ticker == "ADA"){
-      $("#entry-ADA-sell").addClass("hidden");
-    }if(ticker == "VET"){
-      $("#entry-VET-sell").addClass("hidden");
-    }if(ticker == "LINK"){
-      $("#entry-LINK-sell").addClass("hidden");
-    }
+}
+
+function removeTokenOrderbookSell(ticker){
+
+  if(ticker == "ADA"){
+    $("#entry-ADA-sell").addClass("hidden");
+  }else if(ticker == "VET"){
+    $("#entry-VET-sell").addClass("hidden");
+  }else{
+    $("#entry-LINK-sell").addClass("hidden");
+  }
+
+
+}
+
+function addTokenOrderbookBuy(ticker){
+
+  if(ticker == "ADA"){
+      $("#entry-ADA-buy").removeClass("hidden");
+  }else if(ticker == "VET"){
+    $("#entry-VET-buy").removeClass("hidden");
+  }else {
+    $("#entry-LINK-buy").removeClass("hidden");
+  }
+
+}
+
+function addTokenOrderbookSell(ticker){
+
+if(ticker == "ADA"){
+  $("#entry-ADA-sell").removeClass("hidden");
+}else if(ticker == "VET"){
+  $("#entry-VET-sell").removeClass("hidden");
+}else{
+  $("#entry-LINK-sell").removeClass("hidden");
+}
 
 
 }
