@@ -21,12 +21,12 @@ $(document).ready(function (){
         // console.log(web3.utils.toUtf8(tokenList));
         // }
 
-        loadLimitOrderTable("ADA", 0)
-        loadLimitOrderTable("ADA", 1)
-        loadLimitOrderTable("VET", 0)
-        loadLimitOrderTable("VET", 1)
-        loadLimitOrderTable("LINK", 0)
-        loadLimitOrderTable("LINK", 1)
+        // loadLimitOrderTable("ADA", 0)
+        // loadLimitOrderTable("ADA", 1)
+        // loadLimitOrderTable("VET", 0)
+        // loadLimitOrderTable("VET", 1)
+        // loadLimitOrderTable("LINK", 0)
+        // loadLimitOrderTable("LINK", 1)
     })
 
 
@@ -36,7 +36,7 @@ $("#btndepositEth").click(depositEth);
 $("#btnwithdrawEth").click(withdrawEth);
 $("#btnLimitOrder").click(placeLimitOrder);
 $("#btnMarketOrder").click(placeMarketOrder);
-$("#btnOrderbook").click(reloadPage);
+
 $("#btnTokenDeposit").click(depositTokens);
 $("#btnTokenWithdraw").click(withdrawTokens);
 
@@ -80,43 +80,9 @@ async function showTokenList(){
     }
 }
 
-// async function showOrderbookBuy(){ 
-//     let orderbookBuy = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 0).call();
-//     console.log("orderbook buy side: "+orderbookBuy);
 
-//     for(let i = 0; i < orderbookBuy.length; i++){
-//         let ticker = orderbookBuy[i]["ticker"];
-//         let amount = orderbookBuy[i]["amount"];
-//         let price = web3.utils.toWei(orderbookBuy[i]["price"]);
-//         console.log("orderbook buy ticker: "+web3.utils.toUtf8(ticker));
-//         console.log("orderbook buy amount: "+amount);
-//         console.log("orderbook buy price: "+price);
 
-//         $("<tr />").appendTo(".buy-orders-side");
-//         $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".buy-orders-side");
-//         $("<td />").text(amount).appendTo(".buy-orders-side");
-//         $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".buy-orders-side");
-//     }
-// }
 
-// async function showOrderbookSell(){
-//     let orderbookSell = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 1).call();
-//     console.log("orderbook sell side: "+orderbookSell);
-
-//     for(let i = 0; i < orderbookSell.length; i++){
-//         let ticker = orderbookSell[i]["ticker"];
-//         let amount = orderbookSell[i]["amount"];
-//         let price = web3.utils.toWei(orderbookSell[i]["price"]);
-//         console.log("orderbook sell ticker: "+web3.utils.toUtf8(ticker));
-//         console.log("orderbook sell amount: "+amount);
-//         console.log("orderbook sell price: "+price);
-
-//         $("<tr />").appendTo(".sell-orders-side").addClass("new-row")
-//         $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".new-row");
-//         $("<td />").text(amount).appendTo(".new-row");
-//         $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".new-row");
-//     }
-// }
 
 function reloadPage(){
     location.reload();
@@ -124,8 +90,6 @@ function reloadPage(){
 
 
 
-
-//likewise we acess your sell order table like so
 const limitOrderBuyTable = document.getElementById("BuyOrders")
 const limitOrderSellTable = document.getElementById("SellOrders")
 
@@ -147,7 +111,7 @@ async function placeLimitOrder(){
   var priceInWei = web3.utils.toWei(price.toString(), "ether")
 
   //here we use an if statement to let our table var from above decide what table we are appending to
-  //if side == 2 then we append to the sell table
+  //if side == 1 then we append to the sell table
   if(side == 1) {
     table = limitOrderSellTable
   }
@@ -157,14 +121,19 @@ async function placeLimitOrder(){
   }
   await dex.methods.createLimitOrder(side, web3.utils.fromUtf8(ticker), amount, price).send().on("receipt", function(receipt) {
     console.log("limit Order created: " + side, web3.utils.fromUtf8(ticker), amount, price);
-    //here we simple just apend a new row to our table using this notation
+    if(side == 0){
+        side = "buy";
+    }else{
+        side = "sell";
+    }
     table.innerHTML += `
-    <tr>
+    <tr id = "entry-`+ticker+`-`+side+`">
         <td>${ticker}</td>
         <td>${amount}</td>
         <td>${price}</td>
         <td>${priceInWei}</td>
     </tr>`
+    
 
   }).on("error", function(error) {
       console.log("user denied transaction");
@@ -174,19 +143,16 @@ async function placeLimitOrder(){
 
 //this function is called on page load and will loop through the order book and populate 
 //our table per each elemnt in the orderbook
-async function loadLimitOrderTable(ticker, side) {
-    // var buy = side == 0;
-    // var sell = side == 1;
-    //what we do here is we call the getOrderBook function twice and populate both tables for each side
-   
-    //in ticker into the get orderBook function
+async function loadLimitOrderTableBuy(ticker, side) {
+    //populate buy side
     const orderBookBuy = await dex.methods.getOrderBook(web3.utils.fromAscii(ticker), 0).call().then(function(result) {
       for (let i = 0; i < result.length; i++) {
         let priceInWei = web3.utils.toWei(result[i].price.toString(), "ether")
         console.log(result[i].price);
+        var ticker = web3.utils.toUtf8(result[i].ticker);
         
         limitOrderBuyTable.innerHTML += `
-            <tr class="table-row">
+            <tr id = "entry-`+ticker+`-buy" class="table-row">
                 <td>${web3.utils.toUtf8(result[i].ticker)}</td>
                 <td>${result[i].amount}</td>
                 <td>${result[i].price}</td>
@@ -194,13 +160,16 @@ async function loadLimitOrderTable(ticker, side) {
             </tr>`  
       }
     })
-  
+}
+async function loadLimitOrderTableSell(ticker, side) {
     //populate sell side
     const orderBookSell = await dex.methods.getOrderBook(web3.utils.fromAscii(ticker), 1).call().then(function(result) {
       for (let i = 0; i < result.length; i++) {
         let priceInWei = web3.utils.toWei(result[i].amount.toString(), "ether")
+        var ticker = web3.utils.toUtf8(result[i].ticker);
+
         limitOrderSellTable.innerHTML += `
-            <tr class="table-row">
+            <tr id = "entry-`+ticker+`-sell" class="table-row">
                 <td>${web3.utils.toUtf8(result[i].ticker)}</td>
                 <td>${result[i].amount}</td>
                 <td>${result[i].price}</td>
@@ -210,29 +179,6 @@ async function loadLimitOrderTable(ticker, side) {
     })
   }
 
-
-
-
-
-
-
-
-
-// async function placeLimitOrder(){
-//     let side = $("#typeL").val();
-//     console.log(side);
-//     let ticker = $("#tickerL").val();
-//     console.log(ticker);
-
-//     let amount = $("#amountL").val();
-//     console.log(amount);
-
-//     let price = $("#priceL").val();
-//     console.log(price);
-
-//     await dex.methods.createLimitOrder(side, web3.utils.fromUtf8(ticker), amount, price).send();
-//     reloadPage();
-// }
 
 async function placeMarketOrder(){
     let side = $("#typeM").val();
@@ -275,17 +221,137 @@ async function depositEth (){
     reloadPage();
     
 }
+const ADA = document.getElementById("ADA")
+const VET = document.getElementById("VET")
+const LINK = document.getElementById("LINK")
+
+ADA.onclick = function(){
+  console.log("clicked ADA")
+  removeTokenOrderbook("VET", 0)
+  removeTokenOrderbook("VET", 1)
+  removeTokenOrderbook("LINK", 0)
+  removeTokenOrderbook("LINK", 1)
+  
+  loadLimitOrderTableBuy("ADA", 0);
+  loadLimitOrderTableSell("ADA", 1);
+}
 
 
+VET.onclick = function(){
+    console.log("clicked VET")
+    removeTokenOrderbook("ADA", 0)
+    removeTokenOrderbook("ADA", 1)
+    removeTokenOrderbook("LINK", 0)
+    removeTokenOrderbook("LINK", 1)
+    
+    loadLimitOrderTableBuy("VET", 0);
+    loadLimitOrderTableSell("VET", 1);
+}
 
 
+LINK.onclick = function(){
+    console.log("clicked LINK")
+    removeTokenOrderbook("VET")
+    removeTokenOrderbook("VET")
+    removeTokenOrderbook("ADA")
+    removeTokenOrderbook("ADA")
+    
+    loadLimitOrderTableBuy("LINK", 0);
+    loadLimitOrderTableSell("LINK", 1);
+  }
 
 
+  function removeTokenOrderbook(ticker){
+
+    if(ticker == "ADA"){
+        $("#entry-ADA-buy").addClass("hidden");
+    }if(ticker == "VET"){
+      $("#entry-VET-buy").addClass("hidden");
+    }if(ticker == "LINK"){
+      $("#entry-LINK-buy").addClass("hidden");
+    }
+
+    if(ticker == "ADA"){
+      $("#entry-ADA-sell").addClass("hidden");
+    }if(ticker == "VET"){
+      $("#entry-VET-sell").addClass("hidden");
+    }if(ticker == "LINK"){
+      $("#entry-LINK-sell").addClass("hidden");
+    }
 
 
-
-
-
+}
 
 
 });
+
+
+
+
+
+
+
+
+
+
+// async function showOrderbookBuy(){ 
+//     let orderbookBuy = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 0).call();
+//     console.log("orderbook buy side: "+orderbookBuy);
+
+//     for(let i = 0; i < orderbookBuy.length; i++){
+//         let ticker = orderbookBuy[i]["ticker"];
+//         let amount = orderbookBuy[i]["amount"];
+//         let price = web3.utils.toWei(orderbookBuy[i]["price"]);
+//         console.log("orderbook buy ticker: "+web3.utils.toUtf8(ticker));
+//         console.log("orderbook buy amount: "+amount);
+//         console.log("orderbook buy price: "+price);
+
+//         $("<tr />").appendTo(".buy-orders-side");
+//         $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".buy-orders-side");
+//         $("<td />").text(amount).appendTo(".buy-orders-side");
+//         $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".buy-orders-side");
+//     }
+// }
+
+// async function showOrderbookSell(){
+//     let orderbookSell = await dex.methods.getOrderBook(web3.utils.fromAscii("ADA"), 1).call();
+//     console.log("orderbook sell side: "+orderbookSell);
+
+//     for(let i = 0; i < orderbookSell.length; i++){
+//         let ticker = orderbookSell[i]["ticker"];
+//         let amount = orderbookSell[i]["amount"];
+//         let price = web3.utils.toWei(orderbookSell[i]["price"]);
+//         console.log("orderbook sell ticker: "+web3.utils.toUtf8(ticker));
+//         console.log("orderbook sell amount: "+amount);
+//         console.log("orderbook sell price: "+price);
+
+//         $("<tr />").appendTo(".sell-orders-side").addClass("new-row")
+//         $("<td />").text(web3.utils.toUtf8(ticker)).appendTo(".new-row");
+//         $("<td />").text(amount).appendTo(".new-row");
+//         $("<td />").text(web3.utils.fromWei(price).toString()).appendTo(".new-row");
+//     }
+// }
+
+
+
+
+
+
+
+
+
+// async function placeLimitOrder(){
+//     let side = $("#typeL").val();
+//     console.log(side);
+//     let ticker = $("#tickerL").val();
+//     console.log(ticker);
+
+//     let amount = $("#amountL").val();
+//     console.log(amount);
+
+//     let price = $("#priceL").val();
+//     console.log(price);
+
+//     await dex.methods.createLimitOrder(side, web3.utils.fromUtf8(ticker), amount, price).send();
+//     reloadPage();
+// }

@@ -6,7 +6,7 @@ contract LINK is ERC20 {
 
     constructor() ERC20("Chainlink", "LINK") {
         //mint to msg.sender(us)
-        _mint(msg.sender, 100000);
+        _mint(msg.sender, 100000000);
     }
 
 }  

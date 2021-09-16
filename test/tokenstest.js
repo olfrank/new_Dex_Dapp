@@ -66,15 +66,15 @@ const {
         it("3. approve token", async function (){
             _ticker = await linkInstance.symbol();
             _ticker = web3.utils.fromUtf8( _ticker);
-            await linkInstance.approve( walletInstance.address , 1000 ,{from: owner});
+            await linkInstance.approve( walletInstance.address , 100000 ,{from: owner});
 
             _ticker = await adaInstance.symbol();
             _ticker = web3.utils.fromUtf8( _ticker);
-            await adaInstance.approve( walletInstance.address , 1000 ,{from: owner});
+            await adaInstance.approve( walletInstance.address , 100000 ,{from: owner});
 
             _ticker = await vetInstance.symbol();
             _ticker = web3.utils.fromUtf8( _ticker);
-            await vetInstance.approve( walletInstance.address , 1000 ,{from: owner});
+            await vetInstance.approve( walletInstance.address , 100000 ,{from: owner});
 
         });
 
