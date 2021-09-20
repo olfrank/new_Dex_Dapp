@@ -21,12 +21,12 @@ $(document).ready(function (){
         // console.log(web3.utils.toUtf8(tokenList));
         // }
 
-        // loadLimitOrderTable("ADA", 0)
-        // loadLimitOrderTable("ADA", 1)
-        // loadLimitOrderTable("VET", 0)
-        // loadLimitOrderTable("VET", 1)
-        // loadLimitOrderTable("LINK", 0)
-        // loadLimitOrderTable("LINK", 1)
+        // loadLimitOrderTableBuy("ADA", 0)
+        // loadLimitOrderTableSell("ADA", 1)
+        // loadLimitOrderTableBuy("VET", 0)
+        // loadLimitOrderTableSell("VET", 1)
+        // loadLimitOrderTableBuy("LINK", 0)
+        // loadLimitOrderTableSell("LINK", 1)
     })
 
 
@@ -133,7 +133,8 @@ async function placeLimitOrder(){
         <td>${price}</td>
         <td>${priceInWei}</td>
     </tr>`
-    
+    loadLimitOrderTableBuy(ticker, side);
+    loadLimitOrderTableSell(ticker, side);
 
   }).on("error", function(error) {
       console.log("user denied transaction");
@@ -235,9 +236,7 @@ ADA.onclick = function(){
 
   addTokenOrderbookBuy("ADA")
     addTokenOrderbookSell("ADA")
-  
-  // loadLimitOrderTableBuy("ADA", 0);
-  // loadLimitOrderTableSell("ADA", 1);
+
 }
 
 
@@ -251,8 +250,7 @@ VET.onclick = function(){
 
     addTokenOrderbookBuy("VET")
     addTokenOrderbookSell("VET")
-    // loadLimitOrderTableBuy("VET", 0);
-    // loadLimitOrderTableSell("VET", 1);
+
 }
 
 
@@ -267,9 +265,6 @@ LINK.onclick = function(){
     addTokenOrderbookBuy("LINK")
     addTokenOrderbookSell("LINK")
 
-    
-    // loadLimitOrderTableBuy("LINK", 0);
-    // loadLimitOrderTableSell("LINK", 1);
   }
 
 

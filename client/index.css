@@ -150,6 +150,32 @@
     }
   }
   
+  .colorred{
+    background: linear-gradient(-45deg, #b3b1b0, #59595a, #3a3b3b, #dad4cf);
+    background-size: 350% 350%;
+    
+  }
+  .toggleBtn{
+    
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    position: fixed;
+    width: 126px;
+    height: 100;
+    left: 200px;
+    background: #eceff1;
+  }
+  .toggleBtn.darkClouds{
+    background: #939799;
+  }
+
+  
+
+
+
+
   
   
   /** PAGE STYLING **/
@@ -282,7 +308,6 @@
     font-weight: 300;
     line-height: 1.42;
 
-
   }
 
 
@@ -298,6 +323,18 @@
 body{
   background-color:#66D0FF;
 }
+.darker{
+  color: rgba(179, 224, 179);
+}
+.darker2{
+  background:#728ea1;
+}
+
+
+
+
+
+
 .cloud_1{ 
    margin-top:70px;
    width:350px;
@@ -321,6 +358,7 @@ body{
   100%{transform: translateX(0px);}
 
 }
+
 .cloud_1::after, .cloud_1::before{
     content:"";
     position:relative;
@@ -339,6 +377,9 @@ body{
     height:177px;
     top: -75px;
     left:112px;
+}
+.cloud_1.darkClouds{
+  background: #939799;
 }
 
 .cloud_2{ 
@@ -381,6 +422,9 @@ body{
    top: -71px;
    left:-5px;
 }
+.cloud_2.darkClouds{
+  background: #939799;
+}
 
 .cloud_3{ 
   margin-top:70px;
@@ -422,6 +466,9 @@ body{
    height:177px;
    top: -75px;
    left:112px;
+}
+.cloud_3.darkClouds{
+  background: #939799;
 }
 
 
