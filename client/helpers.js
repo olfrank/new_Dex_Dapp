@@ -9,6 +9,10 @@ button1.addEventListener("click", function(){
   $("#toggleDayNight").toggleClass("darkClouds")
   $("#cloud2").toggleClass("darkClouds");
   $("#cloud3").toggleClass("darkClouds");
+  $("#firstCard").toggleClass("shade1");
+  $("#secondCard").toggleClass("shade2");
+  $("#thirdCard").toggleClass("shade3");
+  $("#fourthCard").toggleClass("shade4");
   
 })
 

@@ -5,6 +5,7 @@ var web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
 
 var contractAddress = "0x907EcC1E7732ba1397CF01E16eD7DaBf2483811d";
 
+
 $(document).ready(function (){
     window.ethereum.enable().then(async function(accounts){
         dex = await new web3.eth.Contract(abi, contractAddress, {from: accounts[0]})

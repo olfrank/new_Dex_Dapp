@@ -238,15 +238,26 @@
   .first{
     background: #fddca9;
   }
+  .first.shade1{
+    background: #c2a882;
+  }
   .second{
     background: #fbb691;
+  }
+  .second.shade2{
+    background: #b68469;
   }
   .third{
     background: #e2b8d5;
   }
+  .third.shade3{
+    background: #a7879d;
+  }
   .fourth{
-    
     background: #a4d9d0;
+  }
+  .fourth.shade4{
+    background: #729791;
   }
   .card__content {
     box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
