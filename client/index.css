@@ -168,7 +168,7 @@
     background: #eceff1;
   }
   .toggleBtn.darkClouds{
-    background: #c3c6c7;
+    background: #a2a4a5;
   }
 
   
@@ -335,7 +335,7 @@ body{
   background-color:#66D0FF;
 }
 .darker{
-  color: rgba(179, 224, 179);
+  color: #51a9cf;
 }
 .darker2{
   background:#728ea1;
@@ -390,7 +390,7 @@ body{
     left:112px;
 }
 .cloud_1.darkClouds{
-  background: #c3c6c7;
+  background: #a2a4a5;
 }
 
 .cloud_2{ 
@@ -434,7 +434,7 @@ body{
    left:-5px;
 }
 .cloud_2.darkClouds{
-  background: #c3c6c7;
+  background: #a2a4a5;
 }
 
 .cloud_3{ 
@@ -479,7 +479,7 @@ body{
    left:112px;
 }
 .cloud_3.darkClouds{
-  background: #c3c6c7;
+  background: #a2a4a5;
 }
 
 

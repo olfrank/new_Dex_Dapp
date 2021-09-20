@@ -33,12 +33,15 @@
     
     
     
+    
 
 </head>
 
 <body id = "body">
 
-<div class = "cloud_1"></div>
+<div id="#cloud01" class = "cloud_1" >
+    <button style="outline: none;" id = "toggleColorDex" class = "toggleBtn">click me too ; )</button>
+</div>
 
 <header>
 
@@ -50,7 +53,7 @@
 
 </header>
 
-    <div class = "cloud_2"></div>
+    <div id="cloud02" class = "cloud_2" ></div>
     
     
 
@@ -233,7 +236,30 @@
     </footer>
     
     
-</body>    
-    <!-- <script src="helpers.js"></script> -->
-    <script src = "connectBtn.js"></script>
+</body>  
+
+<script>
+var button2 = document.getElementById("toggleColorDex");
+
+button2.addEventListener("click", function(){
+  document.body.classList.toggle("colorChange");
+  document.querySelector('h1').classList.toggle("darker");
+  $(".cloud_1").toggleClass("darkClouds");
+  $("#toggleColorDex").toggleClass("darkClouds")
+  $(".cloud_2").toggleClass("darkClouds");
+  $(".sun").toggleClass("darkMode");
+  $(".ray").toggleClass("darkMode");
+  $("#depositWithdraw").toggleClass("darkMode");
+  $(".orders-container").toggleClass("darkMode");
+  $(".listOfTokens").toggleClass("darkMode");
+  $(".orderbook").toggleClass("darkMode");
+  $("#buyside").toggleClass("darkMode");
+  $("#sellside").toggleClass("darkMode");
+
+
+});
+
+
+</script>
+    
 </html>

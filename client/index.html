@@ -34,7 +34,7 @@
 
 
         <div class = "cloud_1" id="cloud1">
-            <button style="outline: none;" id = "toggleDayNight" class = "toggleBtn">click me ; )</button>
+            <button style="outline: none;" id = "toggleColorIndex" class = "toggleBtn">click me ; )</button>
         </div>
 <header>
     
@@ -165,16 +165,24 @@
         </footer>
 
     </body>
-    <script src="helpers.js"></script>
-    <script src = "connectBtn.js"></script>
+    <script>
+
+        var button1 = document.getElementById("toggleColorIndex");
+
+        button1.addEventListener("click", function(){
+          document.body.classList.toggle("colorred");
+          document.querySelector('h1').classList.toggle("darker");
+          //document.getElementById('clouds').classList.toggle("darker2");
+          $("#cloud1").toggleClass("darkClouds");
+          $("#toggleColorIndex").toggleClass("darkClouds")
+          $("#cloud2").toggleClass("darkClouds");
+          $("#cloud3").toggleClass("darkClouds");
+          $("#firstCard").toggleClass("shade1");
+          $("#secondCard").toggleClass("shade2");
+          $("#thirdCard").toggleClass("shade3");
+          $("#fourthCard").toggleClass("shade4");
+  
+});
+    </script>
+    
 </html>
-
-
-<!-- 
-
-
-<strong>Ganache </strong>allows you to run a personal Ethereum blockchain used to run tests, execute commands, and inspect 
-                                state while controlling how the chain operates. Ganache is an extremely useful tool in helping developers 
-                                debug, improve the security and test the functionality of their smart contracts. It also provides convenient 
-                                tools such as a built-in block explorer. 
-                                <br> -->

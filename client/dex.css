@@ -1,3 +1,84 @@
+header {
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 50vh;
+  display: grid;
+  text-align: center;
+  color: rgb(78, 78, 78);
+  
+}
+
+body {
+    margin: 50px;
+    background: linear-gradient(-45deg, #ea4a19, #e05312, #fa8e46, #e46430);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+
+
+  h1 {
+    font-weight: 300;
+    font-size: 4.5em;
+  }
+
+  h2 {
+    font-weight: 300;
+    font-size: 2.7em;
+  }
+
+  
+  h4 {
+    font-weight: 300;
+    font-size: 2.1em;
+  }
+  h5 {
+    font-weight: 300;
+    font-size: 1.7em;
+  }
+  
+  p {
+    font-weight: 300;
+    line-height: 1.42;
+  }
+  .darker{
+    color: rgb(216, 122, 85);
+  }
+  
+  .colorChange{
+    background: linear-gradient(-45deg, #b3b1b0, #59595a, #3a3b3b, #dad4cf);
+    /* background: linear-gradient(-45deg, #445369, #2c2c2c, #849cac, #b7b8ba); */
+    /* background: linear-gradient(-45deg, #8d2b00, #b55119, #be6731, #be6731); */
+    background-size: 350% 350%;
+}
+
+.toggleBtn{
+    
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 15px;
+  position: fixed;
+  width: 120px;
+  top: 2px;
+  height: 100;
+  left: 200px;
+  background: #ef5644e8;
+}
+.toggleBtn.darkClouds{
+  background: #a2a4a5;
+}
+
+
+
 
 /* Dropdown Button */
 .dropbtn {
@@ -63,8 +144,6 @@
     border-radius:100px;
     float: right;
     animation: travel_1 130s ease infinite;
-
-  
   }
   
   
@@ -94,7 +173,13 @@
     top: -75px;
     left:112px;
   }
+
+  .cloud_1.darkClouds{
+    background: #a2a4a5;
+  }
   
+
+
   .cloud_2{ 
     margin-top:-101px;
     width:295px;
@@ -123,15 +208,21 @@
      height:77px;
      top:-143px;
      left: 9px;
-     background: #ee5644e0;
+     
   }
   .cloud_2::before{
      width:184px;
      height:177px;
      top: -71px;
      left:33px;
-     background: #ee5644d4;
+     
   }
+  
+  .cloud_2.darkClouds{
+    background: #a2a4a5;
+  }
+  
+  
   
   
   
@@ -147,10 +238,15 @@
       width:300px;
       height:300px;
       border-radius:50%;	
-    background: linear-gradient(rgb(243 116 7), rgb(255 0 0));
+    background: linear-gradient(rgba(243, 116, 7), rgba(255, 0, 0));
     opacity: 0.9;
     box-shadow: 0px -32px 40px 43px #f5802c; 
+    border: none;
     
+  }
+  .sun.darkMode{
+    background: linear-gradient(#ffffff, #cccccc);
+    box-shadow: 0px 8px 14px 16px #dbd9d9; 
   }
   
   
@@ -174,6 +270,10 @@
       border-radius:80% 80% 0 0;
       position:absolute;
       opacity:0.3;
+  }
+  .ray.darkMode{
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(216, 211, 208, 0.781) 50%, rgba(224, 54, 54, 0) 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(216, 211, 208, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
   }
   
   .ray1 {    
@@ -264,70 +364,9 @@
       100%{ transform: rotate(-40deg); transform: rotate(-40deg);}
   }
   
+ 
   
-  
-  
-  
-  
-  
-  
-  
-  
-  /* background */
-  
-  header {
-    width: 90vw;
-    margin: 0 auto;
-    margin-top: 20%;
-    height: 50vh;
-    display: grid;
-    text-align: center;
-    color: rgb(78, 78, 78);
-    
-  }
-  
-  body {
-      margin: 50px;
-      background: linear-gradient(-45deg, #ea4a19, #e05312, #fa8e46, #e46430);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      font-family: 'Ubuntu', sans-serif;
-  }
-  
-  @keyframes gradient {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-  }
-  
-  
-  
-    h1 {
-      font-weight: 300;
-      font-size: 4.5em;
-    }
-  
-    h2 {
-      font-weight: 300;
-      font-size: 2.7em;
-    }
-  
-    
-    h4 {
-      font-weight: 300;
-      font-size: 2.1em;
-    }
-    h5 {
-      font-weight: 300;
-      font-size: 1.7em;
-    }
-    
-    p {
-      font-weight: 300;
-      line-height: 1.42;
-    }
-  
-  .connectDiv{
+  /* .connectDiv{
     float: right;
     
   }
@@ -340,7 +379,7 @@
     background: #ee5644;
     border: 0px solid;
   }
-  
+   */
   
   /* deposit and withdraw style */
   
@@ -353,6 +392,10 @@
     /* background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
     padding: 20px;
   }
+  #depositWithdraw.darkMode{
+    background: linear-gradient( rgb(58, 113, 177) 0%, rgb(81, 144, 155) 100%);
+  }
+
   
   .my-row {
     border-radius: 25px;
@@ -441,6 +484,9 @@
     border-radius: 25px;
     background: radial-gradient(circle, rgb(255, 164, 128) 0%, rgb(228, 120, 77) 100%);
   }
+  .orders-container.darkMode{
+    background: radial-gradient(circle, rgb(179, 115, 89) 0%, rgb(170, 91, 59) 100%);
+  }
   
   .my-row-order {
     background-color: rgba(201, 163, 40, 0);
@@ -514,6 +560,9 @@
     padding: 20px;
     resize: both;
   }
+  .orderbook.darkMode{
+    background: radial-gradient(circle, rgb(141, 103, 119) 0%, rgb(101, 128, 160) 100%);
+  }
   
   #buyside{
     position: relative;
@@ -523,6 +572,9 @@
     border-radius: 25px;
     background-color: rgba(119, 232, 111, 50%);
   }
+  #buyside.darkMode{
+    background-color: rgba(79, 156, 73, 0.5);
+  }
   
   #sellside{
     position: relative;
@@ -531,6 +583,9 @@
     width: 50%;
     border-radius: 25px;
     background-color: rgba(255, 147, 147, 72%);
+  }
+  #sellside.darkMode{
+    background-color: rgba(177, 103, 103, 0.72);
   }
   
   #btnOrderbook{
@@ -577,7 +632,7 @@
   
   /* available token list */
   
-  .ListOfTokens{
+  .listOfTokens{
     margin-top: 100px;
     position: relative;
     margin: auto;
@@ -586,6 +641,9 @@
     border-radius: 25px;
     background-color: rgb(169, 164, 236);
     padding: 20px;
+  }
+  .listOfTokens.darkMode{
+    background-color: rgb(112, 109, 156);
   }
   
   /* Navbar */
