@@ -168,7 +168,7 @@
     background: #eceff1;
   }
   .toggleBtn.darkClouds{
-    background: #939799;
+    background: #c3c6c7;
   }
 
   
@@ -379,7 +379,7 @@ body{
     left:112px;
 }
 .cloud_1.darkClouds{
-  background: #939799;
+  background: #c3c6c7;
 }
 
 .cloud_2{ 
@@ -423,7 +423,7 @@ body{
    left:-5px;
 }
 .cloud_2.darkClouds{
-  background: #939799;
+  background: #c3c6c7;
 }
 
 .cloud_3{ 
@@ -468,7 +468,7 @@ body{
    left:112px;
 }
 .cloud_3.darkClouds{
-  background: #939799;
+  background: #c3c6c7;
 }
 
 
