@@ -54,13 +54,12 @@ body {
   }
   
   .colorChange{
-    background: linear-gradient(-45deg, #b3b1b0, #59595a, #3a3b3b, #dad4cf);
-    /* background: linear-gradient(-45deg, #445369, #2c2c2c, #849cac, #b7b8ba); */
-    /* background: linear-gradient(-45deg, #8d2b00, #b55119, #be6731, #be6731); */
+    background: linear-gradient(-45deg, #b3b1b0, #222, #222, #dad4cf);
+    
     background-size: 350% 350%;
 }
 
-.toggleBtn{
+/* .toggleBtn{
     
   border: none;
   border-radius: 20px;
@@ -75,7 +74,54 @@ body {
 }
 .toggleBtn.darkClouds{
   background: #a2a4a5;
+} */
+
+
+/****** toggle checkbox */
+.toggleBtn{
+  -webkit-appearance: none;
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 100px;
+  background-image: url('./images/maxresdefault.jpg');
+  /* background-image: url('./images/2.jpg'); */
+  background-size: cover;
+  border-radius: 50px;
+  outline: none;
+  transition: background-image .90s;
+  box-shadow: 0px 2px 20px 1px rgb(223, 219, 219);
+  margin-bottom: 100px;
+  left: 200px;
+  top: 10px;
 }
+.toggleBtn:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    background-color: navy;
+    border-radius: 50px;
+    transition: all .9s;
+    background-color: #F7CA33;
+}
+input:checked {
+  background-image: url(https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png);
+  transition: background-image .90s;
+
+}
+
+input:checked:before {
+  transform: translate(100%);
+  transition: all .9s;
+  background-color: #ECF0F3;
+}
+
+/* .toggleBtn.darkClouds{
+  background: #a2a4a5;
+} */
 
 
 
@@ -458,6 +504,8 @@ body {
     position: relative;
     border: none;
     border-radius: 10px;
+    background-image: url('./images/valleyCartoon.jpg');
+    background-size: cover;
     
   }
   
@@ -469,6 +517,8 @@ body {
     position: relative;
     border: none;
     border-radius: 10px;
+    background-image: url('./images/valleyCartoon.jpg');
+    background-size: cover;
   }
   
   
@@ -521,7 +571,7 @@ body {
     position: relative;
     
   }
-  .input-field{
+  .input-fieldL{
     display: flex;
     margin: 20px;
     position: relative;
@@ -529,6 +579,20 @@ body {
     border-radius: 10px;
     border: none;
     padding: 5px;
+    background-image: url('./images/cartoon-landscape3.jpeg');
+    background-size: cover;
+
+  }
+  .input-fieldM{
+    display: flex;
+    margin: 20px;
+    position: relative;
+    left: 91px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    background-image: url('./images/cartoon-landscape4.jpeg');
+    background-size: cover;
 
   }
   

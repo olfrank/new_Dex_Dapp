@@ -38,9 +38,10 @@
 </head>
 
 <body id = "body">
-
+    <input type="checkbox" id = "toggleColorDex" class = "toggleBtn"/>
 <div id="#cloud01" class = "cloud_1" >
-    <button style="outline: none;" id = "toggleColorDex" class = "toggleBtn">click me too ; )</button>
+    
+    <!-- <button style="outline: none;" id = "toggleColorDex" class = "toggleBtn">click me too ; )</button> -->
 </div>
 
 <header>
@@ -127,17 +128,17 @@
         <div class = "row my-row-order">
             <div id= "limit" class = "col-sm limit-order"><h4>limit order.</h4>
                 <div class = "choose col-sm my-col-1">~ to enter a buy order input the number 0. <br> For a sell order input the number 1 ~
-                    <input class = "input-field" type="number" id = "typeL" placeholder = "buy(0) or sell(1)">
+                    <input class = "input-fieldL" type="number" id = "typeL" placeholder = "buy(0) or sell(1)">
                 </div>
                 <div class = "choose col-sm my-col-1">~ enter the ticker of the token you would like to buy/sell below: (e.g. VET) ~
-                    <input class = "input-field" type="bytes32" id = "tickerL" placeholder="ticker">
+                    <input class = "input-fieldL" type="bytes32" id = "tickerL" placeholder="ticker">
                 </div>
                 <div class= "choose col-sm my-col-1">~ input the amount you would like to buy/sell of the chosen token below: ~
-                    <input class = "input-field" type="number" id = "amountL" placeholder="amount">
+                    <input class = "input-fieldL" type="number" id = "amountL" placeholder="amount">
                 </div>
                 <div class = "choose col-sm my-col-1">~ input the price of the asset you wish to buy/sell at below ~
                     <p>reference: 100 = 1 ETH, 1 = 0.01ETH</p>
-                    <input class = "input-field" type="number" id="priceL" placeholder="price">
+                    <input class = "input-fieldL" type="number" id="priceL" placeholder="price">
                 </div>
                 <button class = "btn btn-dark space" type = "button" id = "btnLimitOrder">confirm and place limit order</button>
                 <span class = "confirmOrder"></span>
@@ -145,13 +146,13 @@
 
             <div id = "market" class = "col-sm market-order"><h4>market order.</h4>
                 <div class = "choose col-sm my-col-1">~ to enter a buy order input the number 0. <br>For a sell order input the number 1 ~
-                    <input class = "input-field" type="number" id = "typeM" placeholder = "buy(0) or sell(1)">
+                    <input class = "input-fieldM" type="number" id = "typeM" placeholder = "buy(0) or sell(1)">
                 </div>
                 <div class = "choose col-sm my-col-1">~ enter the ticker of the token you would like to buy/sell below ~
-                    <input class = "input-field" type="bytes32" id = "tickerM" placeholder="ticker">
+                    <input class = "input-fieldM" type="bytes32" id = "tickerM" placeholder="ticker">
                 </div>
                 <div class = "choose col-sm my-col-1">~ input the amount you would like to buy/sell of the chosen token below ~
-                    <input class = "input-field" type="number" id = "amountM" placeholder="amount">
+                    <input class = "input-fieldM" type="number" id = "amountM" placeholder="amount">
                 </div>
                 <button class = "btn btn-dark space" type = "button" id = "btnMarketOrder">confirm and place market order</button>
                 <span class = "confirmOrder"></span>
