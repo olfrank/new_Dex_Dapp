@@ -133,7 +133,7 @@ input:checked:before {
   padding: 10px;
   font-size: 16px;
   border: none;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -291,7 +291,7 @@ input:checked:before {
     
   }
   .sun.darkMode{
-    background: linear-gradient(#ffffff, #cccccc);
+    background: linear-gradient(#dad6d6, #cccccc);
     box-shadow: 0px 8px 14px 16px #dbd9d9; 
   }
   
@@ -486,8 +486,13 @@ input:checked:before {
   }
   #yourBalance{
     position: relative;
-    width: 50;
-    padding: 30px;
+    display: flex;
+    padding: 26px;
+    border: none;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
     
   }
   #tokenBal{
@@ -508,6 +513,12 @@ input:checked:before {
     background-size: cover;
     
   }
+
+  .deposit-amount.darkMode{
+    background-image: url('./images/nightsky.jpg');
+    background-size: cover;
+
+  }
   
   .withdraw-amount{
     margin: auto;
@@ -519,6 +530,11 @@ input:checked:before {
     border-radius: 10px;
     background-image: url('./images/valleyCartoon.jpg');
     background-size: cover;
+  }
+  .withdraw-amount.darkMode{
+    background-image: url('./images/nightsky.jpg');
+    background-size: cover;
+
   }
   
   
@@ -583,6 +599,12 @@ input:checked:before {
     background-size: cover;
 
   }
+  .input-fieldL.darkMode{
+    background-image: url('./images/nightsky.jpg');
+    background-size: cover;
+
+  }
+
   .input-fieldM{
     display: flex;
     margin: 20px;
@@ -593,8 +615,13 @@ input:checked:before {
     padding: 5px;
     background-image: url('./images/cartoon-landscape4.jpeg');
     background-size: cover;
+  }
+  .input-fieldM.darkMode{
+    background-image: url('./images/nightsky.jpg');
+    background-size: cover;
 
   }
+  
   
   #btnLimitOrder{
     align-self: center;
@@ -619,13 +646,14 @@ input:checked:before {
     text-align: center;
     height: 750px;
     /* background: radial-gradient(circle, rgb(73, 101, 226) 0%, rgb(91, 215, 219) 100%); */
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: radial-gradient(circle, rgb(12, 134, 73) 0%,rgb(42, 113, 194) 100%);
     border-radius: 25px;
     padding: 20px;
     resize: both;
+    color:rgb(3, 3, 3);
   }
   .orderbook.darkMode{
-    background: radial-gradient(circle, rgb(141, 103, 119) 0%, rgb(101, 128, 160) 100%);
+    background: radial-gradient(circle, rgb(47, 78, 170) 0%,rgb(47, 114, 190) 100%);
   }
   
   #buyside{
@@ -633,7 +661,8 @@ input:checked:before {
     float: right;
     width: 50%;
     height: 80%;
-    border-radius: 25px;
+    
+    border-radius: 0px 15px 15px 0px;
     background-color: rgba(119, 232, 111, 50%);
   }
   #buyside.darkMode{
@@ -645,7 +674,7 @@ input:checked:before {
     float: left;
     height: 80%;
     width: 50%;
-    border-radius: 25px;
+    border-radius: 15px 0px 0px 15px;
     background-color: rgba(255, 147, 147, 72%);
   }
   #sellside.darkMode{
@@ -680,10 +709,18 @@ input:checked:before {
   .shadows{
     box-shadow: 10px 10px 100px rgb(0, 0, 0);
     top:0;
-    transition: top ease 0.5s;
+    transition: 0.3s ease-in-out;
   }
+  
+  .shadows.light-shadow{
+    box-shadow: 0px 0px 40px rgb(185, 185, 185);
+    
+    transition: 0.3s ease-in-out;
+  }
+
   .shadows:hover{
-    top:-15px;
+    transform: scale(1.03);
+    /* top:-15px; */
   }
   
   
@@ -697,14 +734,15 @@ input:checked:before {
   /* available token list */
   
   .listOfTokens{
-    margin-top: 100px;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
     position: relative;
-    margin: auto;
-    margin-bottom: 30px;
-    width: 22%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
     border-radius: 25px;
     background-color: rgb(169, 164, 236);
-    padding: 20px;
+    padding: 30px;
   }
   .listOfTokens.darkMode{
     background-color: rgb(112, 109, 156);

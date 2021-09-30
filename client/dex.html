@@ -86,12 +86,12 @@
     </div>
 
     <div class = "container shadows" id = "depositWithdraw">
-        <h2>deposit or withdraw your ETH <i class="fab fa-ethereum"></i></h2> 
+        <h2 align="center">deposit or withdraw your ETH <i class="fab fa-ethereum"></i></h2> 
         <div class = "row my-row">
             <div class = "col-sm my-col" id = "depositETH"><h4>deposit.</h4>
                 <div class = "col-sm space hint">~ enter the amount of ether (ETH) you would like to deposit ~</div>
                 <div class="form-outline">
-                    <input id = "depositEther" type="text" id="form1" placeholder = "Amount To Deposit" class="form-control deposit-amount" />
+                    <input id = "depositEther" type="text" id="form1" placeholder = "amount to deposit" class="form-control deposit-amount" />
                     <button class = "btn btn-dark space2 btnDeposit" type = "button" id = "btndepositEth">deposit</button>
                 </div>
             </div>
@@ -100,15 +100,15 @@
                 <div class = "col-sm space hint">~ enter the amount of ether (ETH) you would like to withdraw ~ </div>
 
                 <div class="form-outline" style= "width: 200px;">
-                    <input id = "withdrawEther" type="text" id="form1" placeholder = "Amount To Withdraw" class="form-control withdraw-amount" />
+                    <input id = "withdrawEther" type="text" id="form1" placeholder = "amount to withdraw" class="form-control withdraw-amount" />
                     <button class = "btn btn-dark space2 btnWithdraw" type = "button" id = "btnwithdrawEth">withdraw</button>
                 </div>
             </div>
             <div class = "col-sm-6 my-col" id = "yourBalance"><h4>your balance.</h4>
                 <div class = "row">
-                    <div class = "col my-col-2">ETH balance
+                    <div class = "col my-col-2">
                         <p>ETH:<span id = "eth-balance"></span></p>
-                        <p>equivalent in Wei:<span id = "wei-balance"></span></p>
+                        <!-- <p>equivalent in Wei:<span id = "wei-balance"></span></p> -->
                     </div>
 
                     <div class = "col">token balance:
@@ -121,6 +121,14 @@
         </div>
     </div>
 </div>
+
+<hr>
+
+        <div class = "listOfTokens" id = "tokenList">
+            <h5>tradable tokens:</h5><span id = "list"></span>
+        </div>
+
+
     <hr>
 
     <div class = "container orders-container shadows">
@@ -160,12 +168,7 @@
         </div>
     </div>
 
-    <hr>
-
-        <div class = "listOfTokens" id = "tokenList">
-            <h5>tradable tokens:</h5>
-            <span id = "list"></span>
-        </div>
+    
     
 
     <hr>
@@ -243,8 +246,10 @@
 var button2 = document.getElementById("toggleColorDex");
 
 button2.addEventListener("click", function(){
+
   document.body.classList.toggle("colorChange");
   document.querySelector('h1').classList.toggle("darker");
+  
   $(".cloud_1").toggleClass("darkClouds");
   $("#toggleColorDex").toggleClass("darkClouds")
   $(".cloud_2").toggleClass("darkClouds");
@@ -256,7 +261,11 @@ button2.addEventListener("click", function(){
   $(".orderbook").toggleClass("darkMode");
   $("#buyside").toggleClass("darkMode");
   $("#sellside").toggleClass("darkMode");
-
+  $(".shadows").toggleClass("light-shadow");
+  $(".input-fieldL").toggleClass("darkMode");
+  $(".input-fieldM").toggleClass("darkMode");
+  $(".deposit-amount").toggleClass("darkMode");
+  $(".withdraw-amount").toggleClass("darkMode");
 
 });
 
